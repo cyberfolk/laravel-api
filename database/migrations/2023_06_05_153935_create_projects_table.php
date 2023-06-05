@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 50)->unique();
+            $table->string('slug', 100);
+            $table->text('description')->nullable(); //text not require dim
+            $table->string('thumb', 200)->nullable();
+            $table->date('start_date');
+            $table->date('last_commit')->nullable();
+            $table->Integer('code_line')->nullable();
+            $table->tinyInteger('folders')->nullable();
             $table->timestamps();
         });
     }
