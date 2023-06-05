@@ -40,6 +40,10 @@ class ProjectController extends Controller
     {
         $val_data = $request->validated();
 
+        $slug = Project::generateSlug($val_data['title']);
+        //dd($slug);
+        $val_data['slug'] = $slug;
+
         Project::create($val_data);
 
         // return to a get route POST/REDIRECT/GET
@@ -65,7 +69,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.project.edit', compact('project'));
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -81,7 +85,7 @@ class ProjectController extends Controller
 
         $project->update($val_data);
 
-        return to_route('admin.project.index')->with('message', "Project: $project->title update succesfully");
+        return to_route('admin.projects.index')->with('message', "Project: $project->title update succesfully");
     }
 
     /**
@@ -93,6 +97,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return to_route('admin.project.index')->with('message', "Project: $project->title deleted succesfully");
+        return to_route('admin.projects.index')->with('message', "Project: $project->title deleted succesfully");
     }
 }
