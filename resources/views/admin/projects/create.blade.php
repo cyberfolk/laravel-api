@@ -92,7 +92,7 @@
                     placeholder="project description here"
                     aria-describedby="descriptionHelper">
                 <small id="descriptionHelper" class="text-secondary @error('description') text-danger @enderror">
-                    Type the description of the project max 1000 characters
+                    Type the description of the project
                 </small>
             </div>
             {{-- /.description --}}
