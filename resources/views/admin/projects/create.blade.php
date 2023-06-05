@@ -7,9 +7,10 @@
 
         @include('partials.validation_errors')
 
-        <h5 class="text-uppercase text-secondary my-4">Add a new Project</h5>
+        <h5 class="text-uppercase text-muted my-4">Add a new Project</h5>
         <form action="{{ route('admin.projects.store') }}" method="post">
             @csrf
+
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" required
@@ -18,7 +19,7 @@
                     placeholder="project title here"
                     aria-describedby="titleHelper">
                 <small id="titleHelper" class="text-secondary @error('title') text-danger @enderror">
-                    Type the title of the project max 100 characters
+                    Type the title of the project max 50 characters
                 </small>
             </div>
             {{-- /.title --}}
@@ -36,77 +37,53 @@
             </div>
             {{-- /.thumb --}}
             <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="number" step="0.01" required
-                    value="{{ old('price') }}" name="price" id="price"
-                    class="form-control @error('price') is-invalid @enderror"
-                    placeholder="project price here"
-                    aria-describedby="priceHelper">
-                <small id="priceHelper" class="text-secondary @error('price') text-danger @enderror">
-                    Type the price of the project max 10 characters
+                <label for="start_date" class="form-label">Start date</label>
+                <input type="date" required
+                    value="{{ old('start_date') }}" name="start_date" id="start_date"
+                    class="form-control @error('start_date') is-invalid @enderror"
+                    placeholder="project start_date here"
+                    aria-describedby="start_dateHelper">
+                <small id="start_dateHelper" class="text-secondary @error('start_date') text-danger @enderror">
+                    Type the sale date of the project
                 </small>
             </div>
-            {{-- /.price --}}
+            {{-- /.start_date --}}
             <div class="mb-3">
-                <label for="series" class="form-label">Series</label>
-                <input type="text" required
-                    value="{{ old('series') }}" name="series" id="series"
-                    class="form-control @error('series') is-invalid @enderror"
-                    placeholder="project series here"
-                    aria-describedby="seriesHelper">
-                <small id="seriesHelper" class="text-secondary @error('series') text-danger @enderror">
-                    Type the series of the project max 100 characters
-                </small>
-            </div>
-            {{-- /.series --}}
-            <div class="mb-3">
-                <label for="sale_date" class="form-label">Sale date</label>
+                <label for="last_commit" class="form-label">Last Commit</label>
                 <input type="date"
-                    value="{{ old('sale_date') }}" name="sale_date" id="sale_date"
-                    class="form-control @error('sale_date') is-invalid @enderror"
-                    placeholder="project sale_date here"
-                    aria-describedby="sale_dateHelper">
-                <small id="sale_dateHelper" class="text-secondary @error('sale_date') text-danger @enderror">
-                    Type the sale date of the project max 10 characters
+                    value="{{ old('last_commit') }}" name="last_commit" id="last_commit"
+                    class="form-control @error('last_commit') is-invalid @enderror"
+                    placeholder="project last_commit here"
+                    aria-describedby="last_commitHelper">
+                <small id="last_commitHelper" class="text-secondary @error('last_commit') text-danger @enderror">
+                    Type the last commit date of the project
                 </small>
             </div>
-            {{-- /.sale_date --}}
+            {{-- /.last_commit --}}
             <div class="mb-3">
-                <label for="type" class="form-label">Type</label>
-                <input type="text" required
-                    value="{{ old('type') }}" name="type" id="type"
-                    class="form-control @error('type') is-invalid @enderror"
-                    placeholder="project type here"
-                    aria-describedby="typeHelper">
-                <small id="typeHelper" class="text-secondary @error('type') text-danger @enderror">
-                    ype the type of the project max 100 characters
+                <label for="code_line" class="form-label">Code line</label>
+                <input type="number" step="1"
+                    value="{{ old('code_line') }}" name="code_line" id="code_line"
+                    class="form-control @error('code_line') is-invalid @enderror"
+                    placeholder="project code_line here"
+                    aria-describedby="code_lineHelper">
+                <small id="code_lineHelper" class="text-secondary @error('code_line') text-danger @enderror">
+                    Type the number of code line of the project
                 </small>
             </div>
-            {{-- /.type --}}
+            {{-- /.code_line --}}
             <div class="mb-3">
-                <label for="writers" class="form-label">Writers</label>
-                <input type="text"
-                    value="{{ old('writers') }}" name="writers" id="writers"
-                    class="form-control @error('writers') is-invalid @enderror"
-                    placeholder="project writers here"
-                    aria-describedby="writersHelper">
-                <small id="writersHelper" class="text-secondary @error('writers') text-danger @enderror">
-                    Type the writers of the project separate with ","
+                <label for="folders" class="form-label">folders</label>
+                <input type="number" step="1"
+                    value="{{ old('folders') }}" name="folders" id="folders"
+                    class="form-control @error('folders') is-invalid @enderror"
+                    placeholder="project folders here"
+                    aria-describedby="foldersHelper">
+                <small id="foldersHelper" class="text-secondary @error('folders') text-danger @enderror">
+                    Type the number of the project folders
                 </small>
             </div>
-            {{-- /.writers --}}
-            <div class="mb-3">
-                <label for="artists" class="form-label">Artists</label>
-                <input type="text"
-                    value="{{ old('artists') }}" name="artists" id="artists"
-                    class="form-control @error('artists') is-invalid @enderror"
-                    placeholder="project artists here"
-                    aria-describedby="artistsHelper">
-                <small id="artistsHelper" class="text-secondary @error('artists') text-danger @enderror">
-                    Type the artists of the project separate with ","
-                </small>
-            </div>
-            {{-- /.artists --}}
+            {{-- /.folders --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <input type="textarea" row="4"
