@@ -11,32 +11,24 @@
             </div>
             <div class="col-6">
                 <div>
-                    <strong>Price: </strong>
-                    <span>${{ $project->price }}</span>
-                </div>
-                <div>
-                    <strong>Series: </strong>
-                    <span>{{ $project->series }}</span>
-                </div>
-                <div>
-                    <strong>Sale data: </strong>
-                    <span>{{ $project->sale_date }}</span>
-                </div>
-                <div>
-                    <strong>Type: </strong>
-                    <span>{{ $project->type }}</span>
-                </div>
-                <div>
                     <strong>Description:</strong>
                     <span>{{ $project->description }}</span>
                 </div>
                 <div>
-                    <strong>Writers: </strong>
-                    <span>{{ $project->writers }}</span>
+                    <strong>Start data: </strong>
+                    <span>{{ $project->start_date }}</span>
                 </div>
                 <div>
-                    <strong>Artists: </strong>
-                    <span>{{ $project->artists }}</span>
+                    <strong>Last commit: </strong>
+                    <span>{{ $project->last_commit }}</span>
+                </div>
+                <div>
+                    <strong>Code line: </strong>
+                    <span>{{ $project->code_line }}</span>
+                </div>
+                <div>
+                    <strong>Folders: </strong>
+                    <span>{{ $project->folders }}</span>
                 </div>
             </div>
         </div>

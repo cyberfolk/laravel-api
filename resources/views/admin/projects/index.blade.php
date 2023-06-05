@@ -23,14 +23,12 @@
                         <th>ID</th>
                         <th>Thumb</th>
                         <th>Title</th>
-                        <th>Price</th>
-                        <th style="width: 40%">Description</th>
-                        <th>Series</th>
-                        <th style="width: 10%">sale_date</th>
-                        <th>Type</th>
-                        <th>Writers</th>
-                        <th>Artists</th>
-                        <th>actions</th>
+                        <th>Description</th>
+                        <th>Start Date</th>
+                        <th>Last commit</th>
+                        <th>Code lines</th>
+                        <th>Folders</th>
+                        <th style="width: 5%">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -39,13 +37,11 @@
                             <td scope="row">{{ $project->id }}</td>
                             <td><img height="100" src="{{ $project->thumb }}" alt="{{ $project->title }}"></td>
                             <td>{{ $project->title }}</td>
-                            <td>${{ $project->price }}</td>
                             <td>{{ $project->description }}</td>
-                            <td>{{ $project->series }}</td>
-                            <td>{{ $project->sale_date }}</td>
-                            <td>{{ $project->type }}</td>
-                            <td>{{ $project->writers }}</td>
-                            <td>{{ $project->artists }}</td>
+                            <td>{{ $project->start_date }}</td>
+                            <td>{{ $project->last_commit }}</td>
+                            <td>{{ $project->code_line }}</td>
+                            <td>{{ $project->folders }}</td>
                             <td>
                                 <a class="btn btn-primary mb-1" href="{{ route('admin.projects.show', $project->id) }}" title="View" role="button">
                                     <i class="fas fa-eye fa-sm fa-fw"></i>
