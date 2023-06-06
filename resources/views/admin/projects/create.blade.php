@@ -3,11 +3,11 @@
 {{-- @section('page_title', 'Create') --}}
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
 
-        @include('partials.validation_errors')
+        @include('admin.partials.validation_errors')
 
-        <h5 class="text-uppercase text-muted my-4">Add a new Project</h5>
+        <h5 class="text-uppercase text-muted my-3">Add a new Project</h5>
         <form action="{{ route('admin.projects.store') }}" method="post">
             @csrf
 
@@ -25,7 +25,7 @@
             {{-- /.title --}}
             <div class="mb-3">
                 <label for="link_cover" class="form-label">Cover</label>
-                <input type="text"
+                <input type="text" required
                     value="{{ old('link_cover') }}" name="link_cover" id="link_cover"
                     class="form-control @error('link_cover') is-invalid @enderror"
                     placeholder="project link_cover here"
@@ -51,7 +51,7 @@
             {{-- /.link_live --}}
             <div class="mb-3">
                 <label for="link_code" class="form-label">Site code</label>
-                <input type="text"
+                <input type="text" required
                     value="{{ old('link_code') }}" name="link_code" id="link_code"
                     class="form-control @error('link_code') is-invalid @enderror"
                     placeholder="project link_code here"

@@ -3,8 +3,8 @@
 {{-- @section('page_title', 'Create') --}}
 
 @section('content')
-    <div class="container py-5">
-        <h1 class="py-3">{{ $project->title }}</h1>
+    <div class="container-fluid py-5">
+        <h1 class="pb-3">{{ $project->title }}</h1>
         <div class="row">
             <div class="col-3">
                 <img src="{{ $project->link_cover }}" alt="{{ $project->title }}" class="img-fluid">

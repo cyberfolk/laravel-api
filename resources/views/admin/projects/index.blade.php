@@ -3,12 +3,12 @@
 {{-- @section('page_title', 'Create') --}}
 
 @section('content')
-    <div class="container py-5">
+    <div class="container-fluid py-5">
 
-        @include('partials.session_message')
+        @include('admin.partials.session_message')
 
-        <div class="d-flex justify-content-between align-items-center py-5">
-            <h1 class="fw-bold"> Admin Projects</h1>
+        <div class="d-flex justify-content-between align-items-center pb-3">
+            <h1 class="fw-bold text-primary"> Admin Projects</h1>
             <a href="{{ route('admin.projects.create') }}" class="btn btn-dark d-block">
                 <i class="fas fa-plus-circle fa-sm fa-fw"></i>
                 New Project
