@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreProjectRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class StoreProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:50',
+            'title' => ['required', Rule::unique('projects', 'title')->ignore($this->project), 'max:50'],
             'description' => 'nullable',
             /* 'slug' => 'required|max:100', */ // Not required
             'link_cover' =>  'required|max:200', //image?
