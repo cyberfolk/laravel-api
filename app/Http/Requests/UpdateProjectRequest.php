@@ -25,7 +25,7 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'title' => 'required|max:50',
-            /* 'slug' => 'required|max:100', */
+            /* 'slug' => 'required|max:100', */ // Not required
             'description' => 'nullable',
             'thumb' =>  'nullable|max:200', //image?
             'start_date' =>  'required|date|before_or_equal:today|after:1900-01-01",',

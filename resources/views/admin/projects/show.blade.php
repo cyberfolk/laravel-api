@@ -11,6 +11,10 @@
             </div>
             <div class="col-6">
                 <div>
+                    <strong>Slug:</strong>
+                    <span>{{ $project->slug }}</span>
+                </div>
+                <div>
                     <strong>Description:</strong>
                     <span>{{ $project->description }}</span>
                 </div>

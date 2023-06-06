@@ -41,7 +41,7 @@ class ProjectController extends Controller
         $val_data = $request->validated();
 
         $slug = Project::generateSlug($val_data['title']);
-        //dd($slug);
+        /* dd($slug); */
         $val_data['slug'] = $slug;
 
         Project::create($val_data);

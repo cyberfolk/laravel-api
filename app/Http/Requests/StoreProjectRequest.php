@@ -26,7 +26,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => 'required|max:50',
             'description' => 'nullable',
-            /* 'slug' => 'required|max:100', */
+            /* 'slug' => 'required|max:100', */ // Not required
             'thumb' =>  'nullable|max:200', //image?
             'start_date' =>  'required|date|before_or_equal:today|after:1900-01-01"',
             'last_commit' =>  'nullable|date|before_or_equal:today|after:sale_date"', //after:after:sale_date not work

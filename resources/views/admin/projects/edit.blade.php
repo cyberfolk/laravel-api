@@ -8,7 +8,7 @@
         @include('partials.validation_errors')
 
         <h5 class="text-uppercase text-muted my-4">Edit Project</h5>
-        <form action="{{ route('admin.projects.update', $project->id) }}" method="post">
+        <form action="{{ route('admin.projects.update', $project->slug) }}" method="post">
             @csrf
             @method('PATCH')
             <div class="mb-3">
