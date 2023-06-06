@@ -24,18 +24,44 @@
             </div>
             {{-- /.title --}}
             <div class="mb-3">
-                <label for="thumb" class="form-label">Thumb</label>
+                <label for="link_cover" class="form-label">Cover</label>
                 <input type="text"
-                    value="{{ old('thumb') }}" name="thumb" id="thumb"
-                    class="form-control @error('thumb') is-invalid @enderror"
-                    placeholder="project thumb here"
-                    aria-describedby="thumbHelper">
-                <small id="thumbHelper"
-                    class="text-secondary @error('thumb') text-danger @enderror">
+                    value="{{ old('link_cover') }}" name="link_cover" id="link_cover"
+                    class="form-control @error('link_cover') is-invalid @enderror"
+                    placeholder="project link_cover here"
+                    aria-describedby="link_coverHelper">
+                <small id="link_coverHelper"
+                    class="text-secondary @error('link_cover') text-danger @enderror">
                     Type the source image of the project max 200 characters
                 </small>
             </div>
-            {{-- /.thumb --}}
+            {{-- /.link_cover --}}
+            <div class="mb-3">
+                <label for="link_live" class="form-label">Site live</label>
+                <input type="text"
+                    value="{{ old('link_live') }}" name="link_live" id="link_live"
+                    class="form-control @error('link_live') is-invalid @enderror"
+                    placeholder="project link_live here"
+                    aria-describedby="link_liveHelper">
+                <small id="link_liveHelper"
+                    class="text-secondary @error('link_live') text-danger @enderror">
+                    Type the source image of the project max 200 characters
+                </small>
+            </div>
+            {{-- /.link_live --}}
+            <div class="mb-3">
+                <label for="link_code" class="form-label">Site code</label>
+                <input type="text"
+                    value="{{ old('link_code') }}" name="link_code" id="link_code"
+                    class="form-control @error('link_code') is-invalid @enderror"
+                    placeholder="project link_code here"
+                    aria-describedby="link_codeHelper">
+                <small id="link_codeHelper"
+                    class="text-secondary @error('link_code') text-danger @enderror">
+                    Type the source image of the project max 200 characters
+                </small>
+            </div>
+            {{-- /.link_code --}}
             <div class="mb-3">
                 <label for="start_date" class="form-label">Start date</label>
                 <input type="date" required

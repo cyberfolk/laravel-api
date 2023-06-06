@@ -22,7 +22,9 @@ class ProjectSeeder extends Seeder
             $newProject->title = $faker->sentence(3, true);
             $newProject->slug = Str::slug($newProject->title, '-');
             $newProject->description = $faker->text(50);
-            $newProject->thumb = $faker->imageUrl(category: 'Projects', format: 'jpg');
+            $newProject->link_cover = $faker->imageUrl(category: 'Projects', format: 'jpg');
+            $newProject->link_live = $faker->url();
+            $newProject->link_code = $faker->url();
             $newProject->start_date = $faker->date('Y-m-d');
             $newProject->last_commit = $faker->date('Y-m-d');
             $newProject->code_line = $faker->numberBetween(100, 1000);

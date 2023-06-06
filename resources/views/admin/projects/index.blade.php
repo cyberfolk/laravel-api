@@ -21,8 +21,10 @@
                     <caption>Table Name</caption>
                     <tr>
                         <th>ID</th>
-                        <th>Thumb</th>
+                        <th>Cover</th>
                         <th>Title</th>
+                        <th>Site live</th>
+                        <th>Site code</th>
                         <th>Description</th>
                         <th>Start Date</th>
                         <th>Last commit</th>
@@ -35,8 +37,10 @@
                     @forelse ($projects as $project)
                         <tr class="table-primary">
                             <td scope="row">{{ $project->id }}</td>
-                            <td><img height="100" src="{{ $project->thumb }}" alt="{{ $project->title }}"></td>
+                            <td><img height="100" src="{{ $project->link_cover }}" alt="{{ $project->title }}"></td>
                             <td>{{ $project->title }}</td>
+                            <td><a href="{{ $project->link_live }}">{{ $project->link_live }}</a></td>
+                            <td><a href="{{ $project->link_code }}">{{ $project->link_code }}</a></td>
                             <td>{{ $project->description }}</td>
                             <td>{{ $project->start_date }}</td>
                             <td>{{ $project->last_commit }}</td>

@@ -5,9 +5,9 @@
 @section('content')
     <div class="container py-5">
         <h1 class="py-3">{{ $project->title }}</h1>
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-3">
-                <img src="{{ $project->thumb }}" alt="{{ $project->title }}" class="img-fluid">
+                <img src="{{ $project->link_cover }}" alt="{{ $project->title }}" class="img-fluid">
             </div>
             <div class="col-6">
                 <div>
@@ -17,6 +17,14 @@
                 <div>
                     <strong>Description:</strong>
                     <span>{{ $project->description }}</span>
+                </div>
+                <div>
+                    <strong>Site live:</strong>
+                    <span><a href="{{ $project->link_live }}">{{ $project->link_live }}</a></span>
+                </div>
+                <div>
+                    <strong>Site code:</strong>
+                    <span><a href="{{ $project->link_code }}">{{ $project->link_code }}</a></span>
                 </div>
                 <div>
                     <strong>Start data: </strong>
