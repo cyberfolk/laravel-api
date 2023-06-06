@@ -27,7 +27,7 @@ class StoreProjectRequest extends FormRequest
             'title' => 'required|max:50',
             'description' => 'nullable',
             /* 'slug' => 'required|max:100', */ // Not required
-            'link_cover' =>  'nullable|max:200', //image?
+            'link_cover' =>  'required|max:200', //image?
             'link_live' =>  'nullable|max:200',
             'link_code' =>  'required|max:200',
             'start_date' =>  'required|date|before_or_equal:today|after:1900-01-01"',
