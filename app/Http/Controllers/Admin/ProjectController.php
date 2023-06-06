@@ -47,7 +47,7 @@ class ProjectController extends Controller
         Project::create($val_data);
 
         // return to a get route POST/REDIRECT/GET
-        return to_route('admin.projects.index')->with('message', "Project: " . $val_data['title'] . "created succesfully");
+        return to_route('admin.projects.index')->with('message', "Project: " . $val_data['title'] . " created succesfully");
     }
 
     /**
