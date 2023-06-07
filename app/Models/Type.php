@@ -12,7 +12,7 @@ class Type extends Model
 
     use HasFactory;
 
-    public function posts(): HasMany
+    public function projects(): HasMany
     {
         return $this->hasMany(Project::class);
     }
