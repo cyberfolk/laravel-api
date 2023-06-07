@@ -35,6 +35,7 @@ class StoreProjectRequest extends FormRequest
             'last_commit' =>  'nullable|date|before_or_equal:today|after:sale_date"', //after:after:sale_date not work
             'code_line' =>  'nullable',
             'folders' =>  'nullable',
+            'type_id' => ['exists:types,id']
         ];
     }
 }
