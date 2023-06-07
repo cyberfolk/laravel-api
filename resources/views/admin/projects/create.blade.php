@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid">
 
-        @include('admin.partials.validation_errors')
+        @include('partials.validation_errors')
 
         <h5 class="text-uppercase text-muted my-3">Add a new Project</h5>
         <form action="{{ route('admin.projects.store') }}" method="post">

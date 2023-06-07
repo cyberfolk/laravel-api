@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid py-5">
 
-        @include('admin.partials.session_message')
+        @include('partials.session_message')
 
         <div class="d-flex justify-content-between align-items-center pb-3">
             <h1 class="fw-bold text-primary"> Admin Projects</h1>
