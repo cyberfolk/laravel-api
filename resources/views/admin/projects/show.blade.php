@@ -11,6 +11,10 @@
             </div>
             <div class="col-6">
                 <div>
+                    <strong>Type:</strong>
+                    <span>{{ $project->type?->name }}</span>
+                </div>
+                <div>
                     <strong>Slug:</strong>
                     <span>{{ $project->slug }}</span>
                 </div>

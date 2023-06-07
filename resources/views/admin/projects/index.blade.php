@@ -22,14 +22,15 @@
                     <tr>
                         <th>ID</th>
                         <th>Cover</th>
-                        <th>Title</th>
-                        <th>Site live</th>
-                        <th>Site code</th>
-                        <th>Description</th>
+                        <th style="width: 5%">Title</th>
+                        <th style="width: 5%">Site live</th>
+                        <th style="width: 5%">Site code</th>
+                        <th style="width: 5%">Description</th>
                         <th>Start Date</th>
                         <th>Last commit</th>
                         <th>Code lines</th>
                         <th>Folders</th>
+                        <th>Type</th>
                         <th style="width: 5%">Actions</th>
                     </tr>
                 </thead>
@@ -46,6 +47,7 @@
                             <td>{{ $project->last_commit }}</td>
                             <td>{{ $project->code_line }}</td>
                             <td>{{ $project->folders }}</td>
+                            <td>{{ $project->type?->name }}</td>
                             <td>
                                 <a class="btn btn-primary mb-1" href="{{ route('admin.projects.show', $project->slug) }}" title="View" role="button">
                                     <i class="fas fa-eye fa-sm fa-fw"></i>

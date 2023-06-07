@@ -37,6 +37,21 @@
             </div>
             {{-- /.link_cover --}}
             <div class="mb-3">
+                <label for="type_id" class="form-label">Type</label>
+                <select
+                    class="form-select @error('type_id') is-invalid @enderror" name="type_id" id="type_id">
+                    <option value="">Select a type</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}" {{ $type->id == old('type_id', '') ? 'selected' : '' }}>{{ $type->name }}</option>
+                    @endforeach
+                </select>
+                <small id="type_idHelper"
+                    class="text-secondary @error('type_id') text-danger @enderror">
+                    Select one of the following project type
+                </small>
+            </div>
+            {{-- /.type_id --}}
+            <div class="mb-3">
                 <label for="link_live" class="form-label">Site live</label>
                 <input type="text"
                     value="{{ old('link_live') }}" name="link_live" id="link_live"

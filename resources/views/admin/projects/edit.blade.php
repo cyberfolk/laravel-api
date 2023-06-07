@@ -23,6 +23,21 @@
                 </small>
             </div>
             {{-- /.title --}}
+
+            <div class="mb-3">
+                <label for="type_id" class="form-label">Types</label>
+                <select class="form-select @error('type_id') is-invalid @enderror" name=" type_id" id="type_id">
+                    <option value="">Select a type</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}" {{ $type->id == old('type_id', $post->type->id) ? 'selected' : '' }}>{{ $type->name }}</option>
+                    @endforeach
+                </select>
+                <small id="type_idHelper"
+                    class="text-secondary @error('type_id') text-danger @enderror">
+                    Select one of the following project type
+                </small>
+            </div>
+
             <div class="mb-3">
                 <label for="link_cover" class="form-label">Cover</label>
                 <input type="text" required
