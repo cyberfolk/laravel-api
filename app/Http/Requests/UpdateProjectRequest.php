@@ -35,7 +35,7 @@ class UpdateProjectRequest extends FormRequest
             'last_commit' =>  'nullable|date|before_or_equal:today|after:sale_date",',
             'code_line' =>  'nullable',
             'folders' =>  'nullable',
-            'type_id' => ['exists:types,id']
+            'type_id' => ['nullable', 'exists:types,id']
         ];
     }
 }
