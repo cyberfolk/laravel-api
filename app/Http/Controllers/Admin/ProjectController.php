@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
-use App\Http\Requests\StoreProjectRequest;
-use App\Http\Requests\UpdateProjectRequest;
+use App\Http\Requests\Project\StoreProjectRequest;
+use App\Http\Requests\Project\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
 
@@ -36,7 +36,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProjectRequest  $request
+     * @param  \App\Http\Requests\Project\StoreProjectRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreProjectRequest $request)
@@ -79,7 +79,7 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateProjectRequest  $request
+     * @param  \App\Http\Requests\Project\UpdateProjectRequest  $request
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */

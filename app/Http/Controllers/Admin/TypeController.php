@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreTypeRequest;
-use App\Http\Requests\UpdateTypeRequest;
+use App\Http\Requests\Type\StoreTypeRequest;
+use App\Http\Requests\Type\UpdateTypeRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
 
@@ -33,7 +33,7 @@ class TypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTypeRequest  $request
+     * @param  \App\Http\Requests\Type\StoreTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreTypeRequest $request)
@@ -67,7 +67,7 @@ class TypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTypeRequest  $request
+     * @param  \App\Http\Requests\Type\UpdateTypeRequest  $request
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
