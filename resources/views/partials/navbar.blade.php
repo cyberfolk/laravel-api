@@ -5,17 +5,17 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <!-- navbar-toggler -->
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Left Side Of Navbar -->
         <ul class="navbar-nav me-auto">
             <li class="nav-item"><a class="nav-link text-white" href="{{ url('/') }}">{{ __('Home') }}</a></li>
             @auth
                 <li class="nav-item"><a class="nav-link text-white" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></li>
             @endauth
         </ul>
+        <!-- navbar-nav Left -->
 
-        <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ml-auto">
             @guest
                 <li class="nav-item"><a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a></li>
@@ -31,8 +31,12 @@
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
                     </div>
+                    <!-- dropdown-menu -->
                 </li>
+                <!-- dropdown -->
             @endauth
         </ul>
+        <!-- navbar-nav Right -->
     </div>
+    <!-- navbar-collapse -->
 </nav>
