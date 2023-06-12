@@ -70,7 +70,10 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('admin.projects.show', compact('project'));
+        if (Auth::id() === $project->user_id) {
+            return view('admin.projects.show', compact('project'));
+        }
+        abort(403);
     }
 
     /**
@@ -83,7 +86,7 @@ class ProjectController extends Controller
     {
         $types = Type::orderByDesc('id')->get();
         $technologies = Technology::orderByDesc('id')->get();
-        if (Auth::id() === $project->user->id) {
+        if (Auth::id() === $project->user_id) {
             return view('admin.projects.edit', compact('project', 'types', 'technologies'));
         }
         abort(403);
