@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\Project\StoreProjectRequest;
 use App\Http\Requests\Project\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Technology;
 use App\Models\Type;
 
 class ProjectController extends Controller
@@ -28,9 +29,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $technologies = Technology::orderByDesc('id')->get();
         $types = Type::orderByDesc('id')->get();
-
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -73,7 +74,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::orderByDesc('id')->get();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::orderByDesc('id')->get();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**

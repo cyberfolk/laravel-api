@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Technology;
-use App\Http\Requests\StoreTechnologyRequest;
-use App\Http\Requests\UpdateTechnologyRequest;
+use App\Http\Requests\Technology\StoreTechnologyRequest;
+use App\Http\Requests\Technology\UpdateTechnologyRequest;
+use App\Http\Controllers\Controller;
 
 class TechnologyController extends Controller
 {
@@ -15,7 +16,8 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        //
+        $technologies = Technology::orderByDesc('id')->get();
+        return view('admin.technologies.index', compact('technologies'));
     }
 
     /**
@@ -25,18 +27,22 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.technologies.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTechnologyRequest  $request
+     * @param  \App\Http\Requests\Technology\StoreTechnologyRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreTechnologyRequest $request)
     {
-        //
+        $val_data = $request->validated();
+        $slug = Technology::generateSlug($val_data['name']);
+        $val_data['slug'] = $slug;
+        Technology::create($val_data);
+        return to_route('admin.technologies.index')->with('message', "Technology: " . $val_data['name'] . " created succesfully");
     }
 
     /**
@@ -47,7 +53,7 @@ class TechnologyController extends Controller
      */
     public function show(Technology $technology)
     {
-        //
+        return view('admin.technologies.show', compact('technology'));
     }
 
     /**
@@ -58,19 +64,23 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        //
+        return view('admin.technologies.edit', compact('technology'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTechnologyRequest  $request
+     * @param  \App\Http\Requests\Technology\UpdateTechnologyRequest  $request
      * @param  \App\Models\Technology  $technology
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
-        //
+        $val_data = $request->validated();
+        $slug = Technology::generateSlug($val_data['name']);
+        $val_data['slug'] = $slug;
+        $technology->update($val_data);
+        return to_route('admin.technologies.index')->with('message', "Technology: $technology->name update succesfully");
     }
 
     /**
@@ -81,6 +91,7 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+        return to_route('admin.technologies.index')->with('message', "Technology: $technology->title deleted succesfully");
     }
 }

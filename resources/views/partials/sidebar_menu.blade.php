@@ -22,9 +22,9 @@
         </li>
         <!-- nav-item -->
         <li class="nav-item">
-            <a class="nav-link " href="#">
-                <i class="fa-solid fa-tags me-1"></i>
-                {{ __('Tags') }}
+            <a class="nav-link {{ Route::currentRouteName() == 'admin.technologies.index' ? 'bg-dark' : '' }}" href="{{ route('admin.technologies.index') }}">
+                <i class="fa-solid fa-bookmark me-1"></i>
+                {{ __('Technologies') }}
             </a>
         </li>
         <!-- nav-item -->

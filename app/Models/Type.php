@@ -17,7 +17,11 @@ class Type extends Model
     {
         return Str::slug($name, '-');
     }
-
+    /**
+     * Get the projects that owns the Type
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function projects(): HasMany
     {
         return $this->hasMany(Project::class);

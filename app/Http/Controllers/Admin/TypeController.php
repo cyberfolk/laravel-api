@@ -39,14 +39,9 @@ class TypeController extends Controller
     public function store(StoreTypeRequest $request)
     {
         $val_data = $request->validated();
-
         $slug = Type::generateSlug($val_data['name']);
-        /* dd($slug); */
         $val_data['slug'] = $slug;
-
         Type::create($val_data);
-
-        // return to a get route POST/REDIRECT/GET
         return to_route('admin.types.index')->with('message', "Type: " . $val_data['name'] . " created succesfully");
     }
 
@@ -58,7 +53,6 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        /*         dd($type); */
         return view('admin.types.show', compact('type'));
     }
 
