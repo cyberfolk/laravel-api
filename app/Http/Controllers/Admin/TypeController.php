@@ -27,7 +27,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.create');
     }
 
     /**
@@ -38,7 +38,16 @@ class TypeController extends Controller
      */
     public function store(StoreTypeRequest $request)
     {
-        //
+        $val_data = $request->validated();
+
+        $slug = Type::generateSlug($val_data['name']);
+        /* dd($slug); */
+        $val_data['slug'] = $slug;
+
+        Type::create($val_data);
+
+        // return to a get route POST/REDIRECT/GET
+        return to_route('admin.types.index')->with('message', "Type: " . $val_data['name'] . " created succesfully");
     }
 
     /**
@@ -61,7 +70,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -73,7 +82,11 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $val_data = $request->validated();
+        $slug = Type::generateSlug($val_data['name']);
+        $val_data['slug'] = $slug;
+        $type->update($val_data);
+        return to_route('admin.types.index')->with('message', "Type: $type->name update succesfully");
     }
 
     /**
@@ -84,6 +97,7 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return to_route('admin.types.index')->with('message', "Type: $type->title deleted succesfully");
     }
 }
