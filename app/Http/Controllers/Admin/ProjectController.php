@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
+use App\Models\Technology;
+use App\Models\Type;
 use App\Http\Requests\Project\StoreProjectRequest;
 use App\Http\Requests\Project\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
-use App\Models\Technology;
-use App\Models\Type;
+use Illuminate\Support\Facades\Auth;
+
+
+use Illuminate\Contracts\Cache\Store;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -18,9 +23,11 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderByDesc('id')->get();
+        $projects = Auth::user()->projects()->orderByDesc('id')->paginate(8);
+
         return view('admin.projects.index', compact('projects'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -45,7 +52,8 @@ class ProjectController extends Controller
         $val_data = $request->validated();
         $slug = Project::generateSlug($val_data['title']);
         $val_data['slug'] = $slug;
-        $newProject = Project::create($val_data);
+        $val_data['user_id'] = Auth::id();
+        $newProject = Project::create($val_data); //Gli assegno l'id dell'utente loggato
 
         if ($request->has('technologies')) {
             $newProject->technologies()->attach($request->technologies);
@@ -75,8 +83,12 @@ class ProjectController extends Controller
     {
         $types = Type::orderByDesc('id')->get();
         $technologies = Technology::orderByDesc('id')->get();
-        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
+        if (Auth::id() === $project->user->id) {
+            return view('admin.projects.edit', compact('project', 'types', 'technologies'));
+        }
+        abort(403);
     }
+
 
     /**
      * Update the specified resource in storage.
