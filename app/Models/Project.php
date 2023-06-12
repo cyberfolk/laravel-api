@@ -12,7 +12,7 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'description', 'link_cover', 'link_live', 'link_code', 'start_date', 'last_commit', 'code_line', 'folders', 'type_id'];
+    protected $fillable = ['title', 'slug', 'description', 'link_cover', 'link_live', 'link_code', 'start_date', 'last_commit', 'code_line', 'folders', 'type_id', 'user_id'];
 
     public static function generateSlug($title)
     {
@@ -37,5 +37,15 @@ class Project extends Model
     public function technologies(): BelongsToMany
     {
         return $this->belongsToMany(Technology::class);
+    }
+
+    /**
+     * Get the user that owns the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }
