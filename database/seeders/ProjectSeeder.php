@@ -29,6 +29,7 @@ class ProjectSeeder extends Seeder
             $newProject->last_commit = $faker->date('Y-m-d');
             $newProject->code_line = $faker->numberBetween(100, 1000);
             $newProject->folders = $faker->numberBetween(5, 30);
+            $newProject->user_id = 1;
             $newProject->save();
         }
     }
