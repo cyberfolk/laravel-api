@@ -52,6 +52,10 @@
                     <strong>Folders: </strong>
                     <span>{{ $project->folders }}</span>
                 </div>
+                <div>
+                    <strong>User: </strong>
+                    <span>{{ $project->user->name }}</span>
+                </div>
             </div>
         </div>
     </div>
