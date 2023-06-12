@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="container-fluid py-5">
-
         @include('partials.session_message')
 
         <div class="d-flex justify-content-between align-items-center pb-3">
@@ -26,11 +25,12 @@
                         <th style="width: 5%">Site live</th>
                         <th style="width: 5%">Site code</th>
                         <th style="width: 5%">Description</th>
-                        <th>Start Date</th>
-                        <th>Last commit</th>
+                        <th style="width: 7%">Start Date</th>
+                        <th style="width: 7%">Last commit</th>
                         <th>Code lines</th>
                         <th>Folders</th>
-                        <th>Type</th>
+                        <th style="width: 6%">Type</th>
+                        <th>Technology</th>
                         <th style="width: 5%">Actions</th>
                     </tr>
                 </thead>
@@ -48,6 +48,11 @@
                             <td>{{ $project->code_line }}</td>
                             <td>{{ $project->folders }}</td>
                             <td>{{ $project->type?->name }}</td>
+                            <td>
+                                @foreach ($project->technologies as $technology)
+                                    <span class="badge bg-secondary">{{ $technology->name }} </span>
+                                @endforeach
+                            </td>
                             <td>
                                 <a class="btn btn-primary mb-1" href="{{ route('admin.projects.show', $project->slug) }}" title="View" role="button">
                                     <i class="fas fa-eye fa-sm fa-fw"></i>

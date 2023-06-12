@@ -10,7 +10,6 @@
         <h5 class="text-uppercase text-muted my-3">Add a new Project</h5>
         <form action="{{ route('admin.projects.store') }}" method="post">
             @csrf
-
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" required
@@ -36,6 +35,22 @@
                 </small>
             </div>
             {{-- /.link_cover --}}
+            <div class="mb-3">
+                <div for="link_cover" class="form-label">Technologies</div>
+                @foreach ($technologies as $technology)
+                    <div class="form-check form-check-inline @error('technologies') is-invalid @enderror">
+                        <label class="form-check-label">
+                            <input name="technologies[]" type="checkbox" value="{{ $technology->id }}" class="form-check-input"
+                                {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                            {{ $technology->name }}
+                        </label>
+                    </div>
+                @endforeach
+                @error('technologies')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            {{-- /.technologies --}}
             <div class="mb-3">
                 <label for="type_id" class="form-label">Type</label>
                 <select

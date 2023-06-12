@@ -15,6 +15,12 @@
                     <span>{{ $project->type?->name }}</span>
                 </div>
                 <div>
+                    <strong>Technologies:</strong>
+                    @foreach ($project->technologies as $technology)
+                        <span class="badge bg-secondary">{{ $technology->name }} </span>
+                    @endforeach
+                </div>
+                <div>
                     <strong>Slug:</strong>
                     <span>{{ $project->slug }}</span>
                 </div>

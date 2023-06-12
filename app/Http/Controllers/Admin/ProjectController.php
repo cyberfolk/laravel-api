@@ -43,14 +43,14 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $val_data = $request->validated();
-
         $slug = Project::generateSlug($val_data['title']);
-        /* dd($slug); */
         $val_data['slug'] = $slug;
+        $newProject = Project::create($val_data);
 
-        Project::create($val_data);
+        if ($request->has('technologies')) {
+            $newProject->technologies()->attach($request->technologies);
+        }
 
-        // return to a get route POST/REDIRECT/GET
         return to_route('admin.projects.index')->with('message', "Project: " . $val_data['title'] . " created succesfully");
     }
 
@@ -91,6 +91,10 @@ class ProjectController extends Controller
         $slug = Project::generateSlug($val_data['title']);
         $val_data['slug'] = $slug;
         $project->update($val_data);
+
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies);
+        }
         return to_route('admin.projects.index')->with('message', "Project: $project->title update succesfully");
     }
 
