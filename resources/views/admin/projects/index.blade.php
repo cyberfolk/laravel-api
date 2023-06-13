@@ -19,19 +19,19 @@
                 <thead class="table-light">
                     <caption>Table Name</caption>
                     <tr>
-                        <th>ID</th>
-                        <th>Cover</th>
-                        <th style="width: 5%">Title</th>
-                        <th style="width: 5%">Site live</th>
-                        <th style="width: 5%">Site code</th>
-                        <th style="width: 5%">Description</th>
-                        <th style="width: 7%">Start Date</th>
-                        <th style="width: 7%">Last commit</th>
-                        <th>Code lines</th>
-                        <th>Folders</th>
-                        <th style="width: 6%">Type</th>
-                        <th>Technology</th>
-                        <th style="width: 5%">Actions</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Cover</th>
+                        <th scope="col" style="width: 50px">Title</th>
+                        <th scope="col" style="width: 90px">Site live</th>
+                        <th scope="col" style="width: 90px">Site code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col" style="width: 110px">Start Date</th>
+                        <th scope="col" style="width: 110px">Last commit</th>
+                        <th scope="col" style="width: 110px">Code lines</th>
+                        <th scope="col">Folders</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Technology</th>
+                        <th scope="col" style="width: 80px">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -40,8 +40,8 @@
                             <td scope="row">{{ $project->id }}</td>
                             <td><img height="100" src="{{ $project->link_cover }}" alt="{{ $project->title }}"></td>
                             <td>{{ $project->title }}</td>
-                            <td><a href="{{ $project->link_live }}">{{ $project->link_live }}</a></td>
-                            <td><a href="{{ $project->link_code }}">{{ $project->link_code }}</a></td>
+                            <td><a href="{{ $project->link_live }}">link_live</a></td>
+                            <td><a href="{{ $project->link_code }}">link_code</a></td>
                             <td>{{ $project->description }}</td>
                             <td>{{ $project->start_date }}</td>
                             <td>{{ $project->last_commit }}</td>
