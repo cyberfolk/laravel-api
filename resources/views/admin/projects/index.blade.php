@@ -93,6 +93,7 @@
                     @endforelse
                 </tbody>
             </table>
+            {{ $projects->links('pagination::simple-bootstrap-5') }}
         </div>
     </div>
 @endsection
