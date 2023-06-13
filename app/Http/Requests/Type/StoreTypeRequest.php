@@ -25,8 +25,8 @@ class StoreTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', Rule::unique('types', 'name')->ignore($this->type), 'max:50'],
-            'link_cover' =>  'required|max:200', //image?
+            'name'       => ['required', Rule::unique('types', 'name')->ignore($this->type), 'max:100'],
+            'link_cover' => ['nullable', 'image', 'max:1024']
         ];
     }
 }
