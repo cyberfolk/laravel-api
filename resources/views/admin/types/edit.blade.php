@@ -8,7 +8,7 @@
         @include('partials.validation_errors')
 
         <h5 class="text-uppercase text-muted my-3">Edit type</h5>
-        <form action="{{ route('admin.types.update', $type->slug) }}" method="post">
+        <form action="{{ route('admin.types.update', $type->slug) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="mb-3">
@@ -25,7 +25,7 @@
             {{-- /.name --}}
             <div class="mb-3">
                 <label for="link_cover" class="form-label">Cover</label>
-                <input type="text" required
+                <input type="file" required
                     value="{{ old('link_cover', $type->link_cover) }}" name="link_cover" id="link_cover"
                     class="form-control @error('link_cover') is-invalid @enderror"
                     placeholder="type link_cover here"

@@ -8,7 +8,7 @@
         @include('partials.validation_errors')
 
         <h5 class="text-uppercase text-muted my-3">Add a new type</h5>
-        <form action="{{ route('admin.technologies.store') }}" method="post">
+        <form action="{{ route('admin.technologies.store') }}" method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
@@ -25,7 +25,7 @@
             {{-- /.name --}}
             <div class="mb-3">
                 <label for="link_cover" class="form-label">Cover</label>
-                <input type="text" required
+                <input type="file" required
                     value="{{ old('link_cover') }}" name="link_cover" id="link_cover"
                     class="form-control @error('link_cover') is-invalid @enderror"
                     placeholder="type link_cover here"
