@@ -25,14 +25,17 @@
             {{-- /.title --}}
             <div class="mb-3">
                 <label for="link_cover" class="form-label">Cover</label>
-                <input type="file" required
-                    value="{{ old('link_cover', $project->link_cover) }}" name="link_cover" id="link_cover"
-                    class="form-control @error('link_cover') is-invalid @enderror"
-                    placeholder="project link_cover here"
-                    aria-describedby="link_coverHelper">
+                <div class="d-flex gap-1 align-items-center">
+                    <img height="40" src="{{ asset('storage/' . $project->link_cover) }}" alt="{{ $project->title }}">
+                    <input type="file" required
+                        value="{{ old('link_cover', $project->link_cover) }}" name="link_cover" id="link_cover"
+                        class="form-control @error('link_cover') is-invalid @enderror"
+                        placeholder="project link_cover here"
+                        aria-describedby="link_coverHelper">
+                </div>
                 <small id="link_coverHelper"
                     class="text-secondary @error('link_cover') text-danger @enderror">
-                    Type the source image of the project max 200 characters
+                    Select the image of the project max 1MB
                 </small>
             </div>
             {{-- /.link_cover --}}
