@@ -31,7 +31,7 @@
                     @forelse ($types as $type)
                         <tr class="table-primary">
                             <td scope="row">{{ $type->id }}</td>
-                            <td><img height="100" src="{{ $type->link_cover }}" alt="{{ $type->title }}"></td>
+                            <td><img height="100" src="{{ asset('storage/' . $type->link_cover) }}" alt="{{ $type->title }}"></td>
                             <td>{{ $type->name }}</td>
                             <td><span class="badge bg-dark">{{ $type->projects?->count() }}</span></td>
                             <td>

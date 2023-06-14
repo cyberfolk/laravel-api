@@ -38,7 +38,7 @@
                     @forelse ($projects as $project)
                         <tr class="table-primary">
                             <td scope="row">{{ $project->id }}</td>
-                            <td><img height="100" src="{{ $project->link_cover }}" alt="{{ $project->title }}"></td>
+                            <td><img height="100" src="{{ asset('storage/' . $project->link_cover) }}" alt="{{ $project->title }}"></td>
                             <td>{{ $project->title }}</td>
                             <td><a href="{{ $project->link_live }}">link_live</a></td>
                             <td><a href="{{ $project->link_code }}">link_code</a></td>

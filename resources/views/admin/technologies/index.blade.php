@@ -31,7 +31,7 @@
                     @forelse ($technologies as $technology)
                         <tr class="table-primary">
                             <td scope="row">{{ $technology->id }}</td>
-                            <td><img height="100" src="{{ $technology->link_cover }}" alt="{{ $technology->title }}"></td>
+                            <td><img height="100" src="{{ asset('storage/' . $technology->link_cover) }}" alt="{{ $technology->title }}"></td>
                             <td>{{ $technology->name }}</td>
                             <td><span class="badge bg-dark">{{ $technology->projects?->count() }}</span></td>
                             <td>
