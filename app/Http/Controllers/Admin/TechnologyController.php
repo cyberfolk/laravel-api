@@ -6,6 +6,8 @@ use App\Models\Technology;
 use App\Http\Requests\Technology\StoreTechnologyRequest;
 use App\Http\Requests\Technology\UpdateTechnologyRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+
 
 class TechnologyController extends Controller
 {
@@ -41,6 +43,12 @@ class TechnologyController extends Controller
         $val_data = $request->validated();
         $slug = Technology::generateSlug($val_data['name']);
         $val_data['slug'] = $slug;
+
+        if ($request->hasFile('link_cover')) {
+            $image_path = Storage::put('uploads', $request->link_cover);
+            $val_data['link_cover'] = $image_path;
+        }
+
         Technology::create($val_data);
         return to_route('admin.technologies.index')->with('message', "Technology: " . $val_data['name'] . " created succesfully");
     }
@@ -79,6 +87,15 @@ class TechnologyController extends Controller
         $val_data = $request->validated();
         $slug = Technology::generateSlug($val_data['name']);
         $val_data['slug'] = $slug;
+
+        if ($request->hasFile('link_cover')) {
+            if ($technology->link_cover) {
+                Storage::delete($technology->link_cover);
+            }
+            $image_path = Storage::put('uploads', $request->link_cover);
+            $val_data['link_cover'] = $image_path;
+        }
+
         $technology->update($val_data);
         return to_route('admin.technologies.index')->with('message', "Technology: $technology->name update succesfully");
     }
@@ -91,6 +108,9 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
+        if ($technology->link_cover) {
+            Storage::delete($technology->link_cover);
+        }
         $technology->delete();
         return to_route('admin.technologies.index')->with('message', "Technology: $technology->title deleted succesfully");
     }

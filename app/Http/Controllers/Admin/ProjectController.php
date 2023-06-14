@@ -9,9 +9,6 @@ use App\Http\Requests\Project\StoreProjectRequest;
 use App\Http\Requests\Project\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-
-
-use Illuminate\Contracts\Cache\Store;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -53,6 +50,12 @@ class ProjectController extends Controller
         $slug = Project::generateSlug($val_data['title']);
         $val_data['slug'] = $slug;
         $val_data['user_id'] = Auth::id();
+
+        if ($request->hasFile('link_cover')) {
+            $image_path = Storage::put('uploads', $request->link_cover);
+            $val_data['link_cover'] = $image_path;
+        }
+
         $newProject = Project::create($val_data); //Gli assegno l'id dell'utente loggato
 
         if ($request->has('technologies')) {
@@ -105,8 +108,16 @@ class ProjectController extends Controller
         $val_data = $request->validated();
         $slug = Project::generateSlug($val_data['title']);
         $val_data['slug'] = $slug;
-        $project->update($val_data);
 
+        if ($request->hasFile('link_cover')) {
+            if ($project->link_cover) {
+                Storage::delete($project->link_cover);
+            }
+            $image_path = Storage::put('uploads', $request->link_cover);
+            $val_data['link_cover'] = $image_path;
+        }
+
+        $project->update($val_data);
         if ($request->has('technologies')) {
             $project->technologies()->sync($request->technologies);
         }
@@ -121,6 +132,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->link_cover) {
+            Storage::delete($project->link_cover);
+        }
         $project->delete();
         return to_route('admin.projects.index')->with('message', "Project: $project->title deleted succesfully");
     }
