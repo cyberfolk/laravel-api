@@ -32,7 +32,7 @@
                     aria-describedby="link_coverHelper">
                 <small id="link_coverHelper"
                     class="text-secondary @error('link_cover') text-danger @enderror">
-                    Type the source image of the type max 200 characters
+                    Select the image of the type max 1MB
                 </small>
             </div>
             {{-- /.link_cover --}}
