@@ -27,7 +27,7 @@
                 <label for="link_cover" class="form-label">Cover</label>
                 <div class="d-flex gap-1 align-items-center">
                     <img height="40" src="{{ asset('storage/' . $project->link_cover) }}" alt="{{ $project->title }}">
-                    <input type="file" required
+                    <input type="file"
                         value="{{ old('link_cover', $project->link_cover) }}" name="link_cover" id="link_cover"
                         class="form-control @error('link_cover') is-invalid @enderror"
                         placeholder="project link_cover here"

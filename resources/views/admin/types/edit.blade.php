@@ -25,7 +25,7 @@
             {{-- /.name --}}
             <div class="mb-3">
                 <label for="link_cover" class="form-label">Cover</label>
-                <input type="file" required
+                <input type="file"
                     value="{{ old('link_cover', $type->link_cover) }}" name="link_cover" id="link_cover"
                     class="form-control @error('link_cover') is-invalid @enderror"
                     placeholder="type link_cover here"
