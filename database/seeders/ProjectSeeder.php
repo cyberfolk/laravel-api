@@ -17,12 +17,11 @@ class ProjectSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $newProject = new Project();
             $newProject->title = $faker->sentence(3, true);
             $newProject->slug = Str::slug($newProject->title, '-');
             $newProject->description = $faker->sentence(30, true);
-            $newProject->link_cover = $faker->imageUrl(category: 'Projects', format: 'jpg');
             $newProject->link_live = $faker->url();
             $newProject->link_code = $faker->url();
             $newProject->start_date = $faker->date('Y-m-d');
@@ -30,6 +29,11 @@ class ProjectSeeder extends Seeder
             $newProject->code_line = $faker->numberBetween(100, 1000);
             $newProject->folders = $faker->numberBetween(5, 30);
             $newProject->user_id = 1;
+
+            $dir = 'storage/app/public/placeholders/';
+            $img_fake = $faker->image($dir, fullPath: false, category: 'Projects', format: 'jpg', word: $newProject->title);
+            $newProject->link_cover = 'placeholders/' . $img_fake;
+
             $newProject->save();
         }
     }
