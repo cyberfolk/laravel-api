@@ -7,7 +7,7 @@
         <h1 class="pb-3">{{ $project->title }}</h1>
         <div class="row">
             <div class="col-3">
-                <img src="{{ $project->link_cover }}" alt="{{ $project->title }}" class="img-fluid">
+                <img src="{{ asset('storage/' . $project->link_cover) }}" alt="{{ $project->title }}" class="img-fluid">
             </div>
             <div class="col-6">
                 <div>
