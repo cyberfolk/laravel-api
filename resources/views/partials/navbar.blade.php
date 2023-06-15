@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark shadow px-5">
-    <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}"> LOGO </a>
+    <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+        <img height="40" src="{{ asset('storage/cyberfolk-logo.png') }}" alt="Personal Logo">
+    </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
