@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 use App\Models\Type;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class TypeSeeder extends Seeder
 {
@@ -15,16 +14,39 @@ class TypeSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-        $base_type = ['front-end', 'back-end', 'full-stack'];
+        $types = [
+            'front-end' => [
+                'name' => 'html',
+                'link' => 'https://www.svgrepo.com/show/234844/coding.svg',
+            ],
+            'back-end' => [
+                'name' => 'css',
+                'link' => 'https://www.svgrepo.com/show/375819/gear.svg',
+            ],
+            'full-stack' => [
+                'name' => 'js',
+                'link' => 'https://www.svgrepo.com/show/375900/stack.svg',
+            ]
+        ];
 
-        foreach ($base_type as $type) {
+
+
+        foreach ($types as $type) {
             $newType = new Type();
-            $newType->name = $type;
+            $newType->name = $type['name'];
             $newType->slug = Str::slug($newType->name, '-');
-            $newType->link_cover = $faker->imageUrl(word: $type, randomize: false, format: 'jpg');
+            $newType->link_cover = $this->downloadImg('types/', $type, '.svg');
             $newType->save();
         }
+    }
+
+    private function downloadImg($root, $item, $extension)
+    {
+        $dir = $root . $item['name'] . $extension;
+        $contents = file_get_contents($item['link']);
+        Storage::put($dir, $contents);
+        return $dir;
     }
 }
