@@ -6,7 +6,8 @@ use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Lead;
+use App\Mail\NewLead;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/mailable', function () {
+    $lead = Lead::find(1);
+    return new NewLead($lead);
 });
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
