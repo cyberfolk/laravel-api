@@ -23,13 +23,9 @@ class ProjectSeeder extends Seeder
             $newProject = new Project();
             $newProject->title = $faker->sentence(3, true);
             $newProject->slug = Str::slug($newProject->title, '-');
-            $newProject->description = $faker->sentence(30, true);
-            $newProject->link_live = $faker->url();
-            $newProject->link_code = $faker->url();
-            $newProject->start_date = $faker->date('Y-m-d');
-            $newProject->last_commit = $faker->date('Y-m-d');
-            $newProject->code_line = $faker->numberBetween(100, 1000);
-            $newProject->folders = $faker->numberBetween(5, 30);
+            $newProject->info = $faker->sentence(30, true);
+            $newProject->link = $faker->url();
+            $newProject->init = $faker->date('Y-m-d');
             $newProject->user_id = 1;
 
             $numTypes = Type::count('id');
@@ -37,7 +33,7 @@ class ProjectSeeder extends Seeder
 
             $dir = 'storage/app/public/placeholders/';
             $img_fake = $faker->image($dir, fullPath: false, category: 'Projects', format: 'jpg', word: $newProject->title);
-            $newProject->link_cover = 'placeholders/' . $img_fake;
+            $newProject->image = 'placeholders/' . $img_fake;
 
             $newProject->save();
         }

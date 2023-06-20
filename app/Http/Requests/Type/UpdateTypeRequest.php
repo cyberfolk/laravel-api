@@ -26,7 +26,7 @@ class UpdateTypeRequest extends FormRequest
     {
         return [
             'name'       => ['required', Rule::unique('types', 'name')->ignore($this->type), 'max:100'],
-            'link_cover' => ['nullable', 'image', 'max:1024']
+            'image' => ['nullable', 'image', 'max:1024']
         ];
     }
 }

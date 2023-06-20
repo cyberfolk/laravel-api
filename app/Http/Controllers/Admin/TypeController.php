@@ -43,9 +43,9 @@ class TypeController extends Controller
         $slug = Type::generateSlug($val_data['name']);
         $val_data['slug'] = $slug;
 
-        if ($request->hasFile('link_cover')) {
-            $image_path = Storage::put('uploads', $request->link_cover);
-            $val_data['link_cover'] = $image_path;
+        if ($request->hasFile('image')) {
+            $image_path = Storage::put('uploads', $request->image);
+            $val_data['image'] = $image_path;
         }
 
         Type::create($val_data);
@@ -87,12 +87,12 @@ class TypeController extends Controller
         $slug = Type::generateSlug($val_data['name']);
         $val_data['slug'] = $slug;
 
-        if ($request->hasFile('link_cover')) {
-            if ($type->link_cover) {
-                Storage::delete($type->link_cover);
+        if ($request->hasFile('image')) {
+            if ($type->image) {
+                Storage::delete($type->image);
             }
-            $image_path = Storage::put('uploads', $request->link_cover);
-            $val_data['link_cover'] = $image_path;
+            $image_path = Storage::put('uploads', $request->image);
+            $val_data['image'] = $image_path;
         }
 
         $type->update($val_data);
@@ -107,8 +107,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        if ($type->link_cover) {
-            Storage::delete($type->link_cover);
+        if ($type->image) {
+            Storage::delete($type->image);
         }
         $type->delete();
         return to_route('admin.types.index')->with('message', "Type: $type->title deleted succesfully");

@@ -22,13 +22,9 @@
                         <th scope="col">ID</th>
                         <th scope="col">Cover</th>
                         <th scope="col" style="width: 50px">Title</th>
-                        <th scope="col" style="width: 90px">Site live</th>
                         <th scope="col" style="width: 90px">Site code</th>
-                        <th scope="col">Description</th>
+                        <th scope="col">info</th>
                         <th scope="col" style="width: 110px">Start Date</th>
-                        <th scope="col" style="width: 110px">Last commit</th>
-                        <th scope="col" style="width: 110px">Code lines</th>
-                        <th scope="col">Folders</th>
                         <th scope="col">Type</th>
                         <th scope="col">Technology</th>
                         <th scope="col" style="width: 80px">Actions</th>
@@ -38,15 +34,11 @@
                     @forelse ($projects as $project)
                         <tr class="table-primary">
                             <td scope="row">{{ $project->id }}</td>
-                            <td><img height="100" src="{{ asset('storage/' . $project->link_cover) }}" alt="{{ $project->title }}"></td>
+                            <td><img height="100" src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}"></td>
                             <td>{{ $project->title }}</td>
-                            <td><a href="{{ $project->link_live }}">link_live</a></td>
-                            <td><a href="{{ $project->link_code }}">link_code</a></td>
-                            <td>{{ $project->description }}</td>
-                            <td>{{ $project->start_date }}</td>
-                            <td>{{ $project->last_commit }}</td>
-                            <td>{{ $project->code_line }}</td>
-                            <td>{{ $project->folders }}</td>
+                            <td><a href="{{ $project->link }}">link</a></td>
+                            <td>{{ $project->info }}</td>
+                            <td>{{ $project->init }}</td>
                             <td>{{ $project->type?->name }}</td>
                             <td>
                                 @foreach ($project->technologies as $technology)

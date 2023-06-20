@@ -44,9 +44,9 @@ class TechnologyController extends Controller
         $slug = Technology::generateSlug($val_data['name']);
         $val_data['slug'] = $slug;
 
-        if ($request->hasFile('link_cover')) {
-            $image_path = Storage::put('uploads', $request->link_cover);
-            $val_data['link_cover'] = $image_path;
+        if ($request->hasFile('image')) {
+            $image_path = Storage::put('uploads', $request->image);
+            $val_data['image'] = $image_path;
         }
 
         Technology::create($val_data);
@@ -88,12 +88,12 @@ class TechnologyController extends Controller
         $slug = Technology::generateSlug($val_data['name']);
         $val_data['slug'] = $slug;
 
-        if ($request->hasFile('link_cover')) {
-            if ($technology->link_cover) {
-                Storage::delete($technology->link_cover);
+        if ($request->hasFile('image')) {
+            if ($technology->image) {
+                Storage::delete($technology->image);
             }
-            $image_path = Storage::put('uploads', $request->link_cover);
-            $val_data['link_cover'] = $image_path;
+            $image_path = Storage::put('uploads', $request->image);
+            $val_data['image'] = $image_path;
         }
 
         $technology->update($val_data);
@@ -108,8 +108,8 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        if ($technology->link_cover) {
-            Storage::delete($technology->link_cover);
+        if ($technology->image) {
+            Storage::delete($technology->image);
         }
         $technology->delete();
         return to_route('admin.technologies.index')->with('message', "Technology: $technology->title deleted succesfully");

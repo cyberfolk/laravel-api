@@ -51,9 +51,9 @@ class ProjectController extends Controller
         $val_data['slug'] = $slug;
         $val_data['user_id'] = Auth::id();
 
-        if ($request->hasFile('link_cover')) {
-            $image_path = Storage::put('uploads', $request->link_cover);
-            $val_data['link_cover'] = $image_path;
+        if ($request->hasFile('image')) {
+            $image_path = Storage::put('uploads', $request->image);
+            $val_data['image'] = $image_path;
         }
 
         $newProject = Project::create($val_data); //Gli assegno l'id dell'utente loggato
@@ -109,12 +109,12 @@ class ProjectController extends Controller
         $slug = Project::generateSlug($val_data['title']);
         $val_data['slug'] = $slug;
 
-        if ($request->hasFile('link_cover')) {
-            if ($project->link_cover) {
-                Storage::delete($project->link_cover);
+        if ($request->hasFile('image')) {
+            if ($project->image) {
+                Storage::delete($project->image);
             }
-            $image_path = Storage::put('uploads', $request->link_cover);
-            $val_data['link_cover'] = $image_path;
+            $image_path = Storage::put('uploads', $request->image);
+            $val_data['image'] = $image_path;
         }
 
         $project->update($val_data);
@@ -132,8 +132,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        if ($project->link_cover) {
-            Storage::delete($project->link_cover);
+        if ($project->image) {
+            Storage::delete($project->image);
         }
         $project->delete();
         return to_route('admin.projects.index')->with('message', "Project: $project->title deleted succesfully");

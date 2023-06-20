@@ -11,7 +11,7 @@ class Type extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'link_cover'];
+    protected $fillable = ['name', 'slug', 'image'];
 
     public static function generateSlug($name)
     {

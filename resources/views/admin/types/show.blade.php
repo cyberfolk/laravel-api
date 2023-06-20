@@ -7,7 +7,7 @@
         <h1 class="pb-3">{{ $type->name }}</h1>
         <div class="row">
             <div class="col-3">
-                <img src="{{ $type->link_cover }}" alt="{{ $type->name }}" class="img-fluid">
+                <img src="{{ $type->image }}" alt="{{ $type->name }}" class="img-fluid">
             </div>
             <div class="col-6">
                 <div>

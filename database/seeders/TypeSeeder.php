@@ -37,7 +37,7 @@ class TypeSeeder extends Seeder
             $newType = new Type();
             $newType->name = $type['name'];
             $newType->slug = Str::slug($newType->name, '-');
-            $newType->link_cover = $this->downloadImg('types/', $type, '.svg');
+            $newType->image = $this->downloadImg('types/', $type, '.svg');
             $newType->save();
         }
     }

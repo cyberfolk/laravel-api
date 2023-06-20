@@ -24,18 +24,18 @@
             </div>
             {{-- /.name --}}
             <div class="mb-3">
-                <label for="link_cover" class="form-label">Cover</label>
+                <label for="image" class="form-label">Cover</label>
                 <input type="file"
-                    value="{{ old('link_cover', $technology->link_cover) }}" name="link_cover" id="link_cover"
-                    class="form-control @error('link_cover') is-invalid @enderror"
-                    placeholder="type link_cover here"
-                    aria-describedby="link_coverHelper">
-                <small id="link_coverHelper"
-                    class="text-secondary @error('link_cover') text-danger @enderror">
+                    value="{{ old('image', $technology->image) }}" name="image" id="image"
+                    class="form-control @error('image') is-invalid @enderror"
+                    placeholder="type image here"
+                    aria-describedby="imageHelper">
+                <small id="imageHelper"
+                    class="text-secondary @error('image') text-danger @enderror">
                     Select the image of the technology max 1MB
                 </small>
             </div>
-            {{-- /.link_cover --}}
+            {{-- /.image --}}
             <button type="submit" class="btn btn-dark w-100 my-4">Save</button>
         </form>
     </div>
