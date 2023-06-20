@@ -18,15 +18,15 @@ class TypeSeeder extends Seeder
     {
         $types = [
             'front-end' => [
-                'name' => 'html',
+                'name' => 'front-end',
                 'link' => 'https://www.svgrepo.com/show/234844/coding.svg',
             ],
             'back-end' => [
-                'name' => 'css',
+                'name' => 'back-end',
                 'link' => 'https://www.svgrepo.com/show/375819/gear.svg',
             ],
             'full-stack' => [
-                'name' => 'js',
+                'name' => 'full-stack',
                 'link' => 'https://www.svgrepo.com/show/375900/stack.svg',
             ]
         ];

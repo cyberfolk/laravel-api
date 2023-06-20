@@ -6,7 +6,9 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 use App\Models\Project;
+use App\Models\Technology;
 use Illuminate\Support\Str;
+use App\Models\Type;
 
 class ProjectSeeder extends Seeder
 {
@@ -29,6 +31,9 @@ class ProjectSeeder extends Seeder
             $newProject->code_line = $faker->numberBetween(100, 1000);
             $newProject->folders = $faker->numberBetween(5, 30);
             $newProject->user_id = 1;
+
+            $numTypes = Type::count('id');
+            $newProject->type_id = rand(1, $numTypes);
 
             $dir = 'storage/app/public/placeholders/';
             $img_fake = $faker->image($dir, fullPath: false, category: 'Projects', format: 'jpg', word: $newProject->title);
