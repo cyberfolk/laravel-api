@@ -6,7 +6,7 @@
 
 ⚙️ Ed ecco a voi la Dashboard-API del mio portfolio progetti, uno degli ultimI lavori fatti per boolen
 
-Si tratta di una piattaforma back-end che consente di raccogliere dati sui miei progetti e caricarli in un database sql tramite le operazioni CRUD. Inoltre con l'utilizzo del API/ProjectController potrà rispondere alle chiamate API restituendo i dati in formato json. Ci sono tante altre funzionalità interessanti come l'autenticazione tramite breeze e la capacità di gestire email appaggioandosi alla risorsa esterne mailtrap.
+Si tratta di una piattaforma back-end per raccogliere i dati dei miei progetti. Interagisce direttamente con un database sql gestendo i dati tramite operazioni CRUD. Con l'utilizzo del API/ProjectController potrà rispondere alle chiamate API restituendo i dati in formato json. Ci sono tante altre funzionalità interessanti come l'autenticazione tramite breeze, la capacità di gestire email appaggioandosi alla risorsa esterne mailtrap, e la possibilità di mettere un tag e la lista delle tecnologie ai singoli progetti utilizzando relazioni many-tomany e one-to-many.
 
 🔗 Repository:
 https://github.com/cyberfolk/laravel-api
