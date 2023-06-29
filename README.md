@@ -1,5 +1,16 @@
 # laravel-api
 
+**Initial commit**: 05/06/23
+
+**Tecnologie:** Laravel, Breeze , PHP, Blade, MySql, Javascript, HTML, CSS e Bootstrap.
+
+⚙️ Ed ecco a voi la Dashboard-API del mio portfolio progetti, uno degli ultimI lavori fatti per boolen
+
+Si tratta di una piattaforma back-end che consente di raccogliere dati sui miei progetti e caricarli in un database sql tramite le operazioni CRUD. Inoltre con l'utilizzo del API/ProjectController potrà rispondere alle chiamate API restituendo i dati in formato json. Ci sono tante altre funzionalità interessanti come l'autenticazione tramite breeze e la capacità di gestire email appaggioandosi alla risorsa esterne mailtrap.
+
+🔗 Repository:
+https://github.com/cyberfolk/laravel-api
+
 ## Descrizione:
 
 -   Usare laravel breeze ed il pacchetto Laravel 9 Preset con autenticazione.
