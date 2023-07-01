@@ -61,7 +61,7 @@ Aggiunngere un nuovo controller `API/ProjectController`, questo controller rispo
 ## ProjectSeeder Fix
 
 Si potrebbe verificare un errore con la generazione delle immagini fake nel seeder.
-Per risolverla occorre modificare il file `image.php` dentro il modulo vendor di `faker` come indicato [qui](https://stackoverflow.com/questions/67415815/images-from-phpfaker-got-deleted-when-stored-in-storage-app-public-news-folder) e [qui](https://laracasts.com/discuss/channels/laravel/using-faker-to-fake-images-always-returns-false)
+Per risolverla occorre modificare il file [image.php](vendor\fakerphp\faker\src\Faker\Provider\Image.php) dentro il modulo vendor di `faker` come indicato [qui](https://stackoverflow.com/questions/67415815/images-from-phpfaker-got-deleted-when-stored-in-storage-app-public-news-folder) e [qui](https://laracasts.com/discuss/channels/laravel/using-faker-to-fake-images-always-returns-false)
 
 Link al file da modificare:
 
