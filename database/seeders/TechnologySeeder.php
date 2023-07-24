@@ -57,7 +57,7 @@ class TechnologySeeder extends Seeder
             $newTechnology = new Technology();
             $newTechnology->name = $technology['name'];
             $newTechnology->slug = Str::slug($newTechnology->name, '-');
-            $newTechnology->image = $this->downloadImg('technologies/', $technology, '.svg');
+            $newTechnology->image = $this->downloadImg('public/technologies/', $technology, '.svg');
             $newTechnology->save();
         }
     }

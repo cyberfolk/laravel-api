@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use Illuminate\Support\Str;
 use App\Models\Type;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectSeeder extends Seeder
 {
@@ -19,6 +20,8 @@ class ProjectSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        Storage::makeDirectory('public/placeholders'); // Without this directory $faker->image don't know where put img
+
         for ($i = 0; $i < 10; $i++) {
             $newProject = new Project();
             $newProject->title = $faker->sentence(3, true);
