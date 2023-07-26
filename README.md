@@ -11,63 +11,56 @@ Si tratta di una piattaforma back-end per raccogliere i dati dei miei progetti. 
 🔗 Repository:
 https://github.com/cyberfolk/laravel-api
 
-## Descrizione:
+<div>
+  <img src="./public/screen/screencapture-1.png" width="23%" style="margin: 4px;"/>
+  <img src="./public/screen/screencapture-2.png" width="23%" style="margin: 4px;"/>
+  <img src="./public/screen/screencapture-3.png" width="23%" style="margin: 4px;"/>
+  <img src="./public/screen/screencapture-4.png" width="23%" style="margin: 4px;"/>
+</div>
 
--   Usare laravel breeze ed il pacchetto Laravel 9 Preset con autenticazione.
--   Iniziamo con il definire il layout, modello, migrazione, controller e rotte necessarie per il sistema portfolio:
--   **Autenticazione**: si parte con l'autenticazione e la creazione di un layout per back-office
--   Creazione del modello `Project` con relativa `migrazione`, `seeder`, `controller` e `rotte`
--   Per la parte di back-office creiamo un resource controller `Admin\ProjectController` per gestire tutte le operazioni CRUD dei progetti
--   Implementiamo la validazione dei dati dei Progetti nelle operazioni CRUD che lo richiedono usando due form requests.
--   Layout admin con bootstrap
+## Milestone:
 
-## One-to-many
+-   Ho installato i pacchetti **laravel/breeze** ed **pacificdev/laravel_9_preset**.
+-   Ho creato il modello `Project` con relativa `migrazione`, `seeder`, `controller` e `rotte`
+-   Ho creato un resource controller `Admin\ProjectController` che mi permette di gestire tutte le operazioni CRUD sui `Project`.
+-   Ho validato i dati dei `Project` nelle operazioni CRUD usando dei form requests.
+-   Ho utilizzato **bootstrap** per il Layout admin.
 
-Aggiungere una nuova entità `Type`, questa entità rappresenta la tipologia di progetto ed è in relazione one to many con i progetti.
-I task da svolgere sono diversi:
+### One-to-many
 
--   Creare la migration per la tabella types
--   Creare il model Type
--   Creare la migration di modifica per la tabella projects per aggiungere la chiave esterna
--   Aggiungere ai model Type e Project i metodi per definire la relazione one to many
--   Visualizzare nella pagina di dettaglio di un progetto la tipologia associata, se presente
--   Permettere all’utente di associare una tipologia nella pagina di creazione e modifica di un progetto
--   Gestire il salvataggio dell’associazione progetto-tipologia con opportune regole di validazione
--   creare il seeder per il model Type.
--   aggiungere le operazioni CRUD per il model Type, in modo da gestire le tipologie di progetto direttamente dal pannello di amministrazione.
+Ho aggiunto una nuova entità `Type`, questa entità rappresenta la tipologia di progetto ed è in relazione one to many con i progetti.
 
-## Many-to-many
+-   Ho creato il modello `Types` con relativa `migrazione`, `seeder`, `controller` e `rotte`.
+-   Ho creato una migration per modificare la tabella `projects` aggiungendo la chiave esterna.
+-   Ho aggiunto ai model `Type' e `Project` i metodi per definire la loro relazione one to many.
+-   Nella pagina per mostrare i dettagli di un progetto ho mostrato la tipologia associata, se presente.
+-   Nella pagina di creazione e modifica di un progetto ho implementato la possibilità di aggiungere una tipologia al progetto
+-   Ho gestito il salvataggio dell’associazione progetto-tipologia con opportune regole di validazione.
+-   Ho aggiunto le operazioni CRUD per il model Type, in modo da gestire le tipologie di progetto direttamente dal pannello di amministrazione.
 
-Aggiungiamo una nuova entità `Technology`, questa entità rappresenta le tecnologie utilizzate ed è in relazione many to many con i progetti.
+### Many-to-many
+
+Ho aggiunto una nuova entità `Technology`, questa entità rappresenta le tecnologie utilizzate ed è in relazione many-to-many con i progetti.
 I task da svolgere sono i medesimi del punto precedente.
 
-## File Storage
+### File Storage
 
-Creare il symlink con l’apposito comando artisan `php artisan storage:link` e di aggiungere l’attributo `enctype="multipart/form-data"` ai form di creazione e di modifica, oltre a modificare il file `filesystems.php` e il` .env` per l'uso del disco public
+Ho implementato la funzionalità di caricare dei file creando un symlink con l’apposito comando artisan `php artisan storage:link`, ho poi aggiunto l’attributo `enctype="multipart/form-data"` ai form di creazione e di modifica, oltre a modificare il file `filesystems.php` e il` .env` per l'uso del disco public.
 
-## API
+### API
 
-Aggiunngere un nuovo controller `API/ProjectController`, questo controller risponderà a delle richieste via API e si occuperà di restituire la lista dei progetti presenti nel database in formato json.
+Ho aggiunto il controller `API/ProjectController`, il quale risponderà alle richieste API restituendo in formato json i dati relativi ai progetti presenti nel database.
 
-## Add mail in DB
+### Mailtrap
 
-## TODO-LIST
+Sfruttando il servizio [Mailtrap](https://mailtrap.io/) ho implementato una funzione che dalla rotta `contact-me` del front-end è possibile inviare una mail che verrà salvata direttamente nel database
 
--   Fix validator e migration
--   Quando creo un nuovo progetto e mando in validazione una data inferiore a 01-01-1900, quando il formi si refresha per farmi cambiare data, anche se metto una data corretta mi prende la data precedente (quella sbagliata) e non mi valida più il form
--   non inserire date maggiori del giorno corrente
--   Ci sono problemi quando carico manualmente un immagine, devo accertamenti sui campi se ho messo tutti i vari controlli nel caso fossero nulli.
-
-## ProjectSeeder Fix
+### ProjectSeeder Fix
 
 Si potrebbe verificare un errore con la generazione delle immagini fake nel seeder.
-Per risolverla occorre modificare il file [image.php](vendor\fakerphp\faker\src\Faker\Provider\Image.php) dentro il modulo vendor di `faker` come indicato [qui](https://stackoverflow.com/questions/67415815/images-from-phpfaker-got-deleted-when-stored-in-storage-app-public-news-folder) e [qui](https://laracasts.com/discuss/channels/laravel/using-faker-to-fake-images-always-returns-false)
+Per risolverla occorre modificare il file [image.php](vendor\fakerphp\faker\src\Faker\Provider\Image.php) dentro il modulo vendor di `faker` come indicato [qui](https://stackoverflow.com/questions/67415815/images-from-phpfaker-got-deleted-when-stored-in-storage-app-public-news-folder) e [qui](https://laracasts.com/discuss/channels/laravel/using-faker-to-fake-images-always-returns-false).
 
-Link al file da modificare:
-
-```bash
-vendor\fakerphp\faker\src\Faker\Provider\Image.php
-```
+Percorso del file da modificare: `vendor\fakerphp\faker\src\Faker\Provider\Image.php`
 
 ```php
 curl_setopt($ch, CURLOPT_FILE, $fp); //existing line
