@@ -37,7 +37,7 @@ class TypeSeeder extends Seeder
             $newType = new Type();
             $newType->name = $type['name'];
             $newType->slug = Str::slug($newType->name, '-');
-            $newType->image = $this->downloadImg('public/types/', $type, '.svg');
+            $newType->image = $this->downloadImg('types/', $type, '.svg');
             $newType->save();
         }
     }
@@ -46,7 +46,7 @@ class TypeSeeder extends Seeder
     {
         $dir = $root . $item['name'] . $extension;
         $contents = file_get_contents($item['link']);
-        Storage::put($dir, $contents);
-        return $dir;
+        Storage::put('public/' . $dir, $contents); // devo specificare che i file li vado a salvare nella cartella public.
+        return $dir; //nel nome del file non c'è la parola public perchè assets() va a pescare i file direttamente dalla cartella public.
     }
 }
