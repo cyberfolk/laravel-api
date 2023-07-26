@@ -11,12 +11,7 @@ Si tratta di una piattaforma back-end per raccogliere i dati dei miei progetti. 
 🔗 Repository:
 https://github.com/cyberfolk/laravel-api
 
-<div>
-  <img src="./public/screen/screencapture-1.png" width="23%" style="margin: 4px;"/>
-  <img src="./public/screen/screencapture-2.png" width="23%" style="margin: 4px;"/>
-  <img src="./public/screen/screencapture-3.png" width="23%" style="margin: 4px;"/>
-  <img src="./public/screen/screencapture-4.png" width="23%" style="margin: 4px;"/>
-</div>
+<img src="./public/screen/screencapture-3.png" width="66%" />
 
 ## Milestone:
 
@@ -32,16 +27,22 @@ Ho aggiunto una nuova entità `Type`, questa entità rappresenta la tipologia di
 
 -   Ho creato il modello `Types` con relativa `migrazione`, `seeder`, `controller` e `rotte`.
 -   Ho creato una migration per modificare la tabella `projects` aggiungendo la chiave esterna.
--   Ho aggiunto ai model `Type' e `Project` i metodi per definire la loro relazione one to many.
+-   Ho aggiunto ai model `Type` e `Project` i metodi per definire la loro relazione one to many.
 -   Nella pagina per mostrare i dettagli di un progetto ho mostrato la tipologia associata, se presente.
 -   Nella pagina di creazione e modifica di un progetto ho implementato la possibilità di aggiungere una tipologia al progetto
 -   Ho gestito il salvataggio dell’associazione progetto-tipologia con opportune regole di validazione.
 -   Ho aggiunto le operazioni CRUD per il model Type, in modo da gestire le tipologie di progetto direttamente dal pannello di amministrazione.
 
+  <img src="./public/screen/screencapture-2.png" width="66%"/>
+
+
 ### Many-to-many
 
 Ho aggiunto una nuova entità `Technology`, questa entità rappresenta le tecnologie utilizzate ed è in relazione many-to-many con i progetti.
 I task da svolgere sono i medesimi del punto precedente.
+
+<img src="./public/screen/screencapture-4.png" width="66%"/>
+
 
 ### File Storage
 
